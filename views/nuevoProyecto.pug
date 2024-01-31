@@ -1,0 +1,17 @@
+extends layout
+
+include mixins/crearProyecto
+
+block contenido
+    .contenido-principal
+        h1 #{nombrePagina} 
+        //- iteramos sobre un arreglo , y a esa varriable errores debe ser igual a la que se encuentra en controller
+        //- para  asegurarnos de que existen errores : solo aparecera si existe errores 
+        pre= vardump(proyecto)
+        if errores
+            each error in errores 
+                .alerta.error= error.texto
+        
+        +crearProyecto(proyecto)
+
+
